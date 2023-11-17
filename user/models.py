@@ -16,4 +16,14 @@ class UserProfile(models.Model):
     def __str__(self):
         return str(self.user)
 
+class Exercise(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=200)
+    description = models.TextField(max_length=500, blank=True)
+    expGain = models.IntegerField(null=True, blank=True)
+    reps = models.IntegerField(null=True, blank=True)
+    sets = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
 
+    def __str__(self):
+        return self.name

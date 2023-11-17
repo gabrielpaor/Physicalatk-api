@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializers import UserSerializer
+from .serializers import *
 from .models import UserProfile as User
+from .models import Exercise
+import random
 
 # Create your views here.
+# GET methods
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -58,3 +61,21 @@ def getUser(request, pk):
     user = User.objects.get(user_id=pk)
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def exerciseList(request):
+    exercises = Exercise.objects.all()
+    serializer = ExerciseSerializer(exercises, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def dailyExercises(request):
+    exercises = Exercise.objects.all()
+    random_exercises = random.sample(list(exercises), 3)
+    serializer = ExerciseSerializer(random_exercises, many=True)
+    return Response(serializer.data)
+
+# POST methods
+
+# UPDATE methods

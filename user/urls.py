@@ -7,6 +7,9 @@ urlpatterns = [
     path('', views.getRoutes, name="routes"),
     path('users/', views.getUsers, name="users"),
     path('user/<str:pk>', views.getUser, name="user"),
+    path('exercise/', views.exerciseList, name="exercise-list"),
+    path('dailyExercises/', views.dailyExercises, name="daily-exercises"),
+    
     # path('users/<str:pk>/', views.getUserById, name="user"),
     # path('users/register/', views.registerUser, name="register"),
     # path('users/login/', views.MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
